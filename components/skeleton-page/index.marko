@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html-comment marko-preserve-whitespace>
+                                    888
+                                    888
+                                    888
+             m a j o r              888  888 .d88b. 888  888.d8888b
+                  k e y             888 .88Pd8P  Y8b888  88888K
+                      2             888888K 88888888888  888"Y8888b.
+                                    888 "88bY8b.    Y88b 888     X88
+                                    888  888 "Y8888  "Y88888 88888P'
+                                                        888
+                                                    Y8b d88P
+                                                    "Y88P"
+
+</html-comment>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="robots" content="noindex, nofollow">
+
+    <title>&#128273; MK2 - <include(input.pageTitle)/></title>
+    <lasso-head/>
+  </head>
+  <body>
+    <div class="page-container">
+      <div class="content-wrapper">
+      <if(input.renderBody)>
+        <include(input.renderBody)/>
+      </if>
+      <else>
+        Some default text. And Even more! Test. Another one. Daft punk.
+      </else>
+      </div>
+
+      <footer>
+        <div class="container grid-lg">
+          <div class="float-right">© ${ new Date().getFullYear() }</div>
+        </div>
+      </footer>
+    </div>
+    <browser-refresh/>
+    <lasso-body/>
+  </body>
+</html>
