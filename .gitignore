@@ -10,3 +10,4 @@ dist/
 dump.rdb
 .marko-devtools/
 /static
+.env

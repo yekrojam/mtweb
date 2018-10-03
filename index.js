@@ -1,6 +1,6 @@
 require('marko/node-require');
-require('lasso/node-require-no-op').enable('.less', '.css');
 
+require('dotenv-safe').config();
 
 const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
