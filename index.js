@@ -1,7 +1,6 @@
 require('marko/node-require');
 
-require('dotenv-safe').config();
-
+const path = require('path');
 const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
 const csrf = require('csurf');
@@ -13,6 +12,10 @@ const lassoMiddleware = require('lasso/middleware');
 const compression = require('compression');
 
 const routers = require('./routers');
+
+require('dotenv-safe').config({
+  example: path.join(__dirname, '.env.example'),
+});
 
 const isProduction = process.env.NODE_ENV === 'production';
 
