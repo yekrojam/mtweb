@@ -24,6 +24,7 @@
     "cookie-parser": "1.4.3",
     "cookie-session": "2.0.0-beta.3",
     "csurf": "1.9.0",
+    "dayjs": "1.7.7",
     "debug": "4.0.1",
     "dotenv-safe": "6.0.0",
     "engine-strict": "1.0.0",
@@ -34,7 +35,6 @@
     "lasso-marko": "2.4.4",
     "lasso-sass": "3.0.0",
     "lodash": "4.17.11",
-    "luxon": "1.4.1",
     "marko": "4.13.5",
     "morgan": "1.9.1",
     "node-sass": "4.9.3"

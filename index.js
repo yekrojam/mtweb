@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
 const csrf = require('csurf');
 const express = require('express');
-const { DateTime } = require('luxon');
+const dayjs = require('dayjs');
 const markoExpress = require('marko/express');
 const lasso = require('lasso');
 const lassoMiddleware = require('lasso/middleware');
@@ -45,7 +45,7 @@ webApp.use(compression());
 webApp.use(cookieParser(process.env.COOKIE_SECRET));
 webApp.use(cookieSession({
   secret: process.env.COOKIE_SECRET,
-  expires: DateTime.local().plus({ years: 1 }),
+  expires: dayjs().add(1, 'year').toDate(),
 }));
 webApp.use(csrf({ ignoreMethods: ['GET', 'HEAD', 'OPTIONS'] }));
 webApp.use(markoExpress());
