@@ -37,7 +37,8 @@
     "lodash": "4.17.11",
     "marko": "4.13.5",
     "morgan": "1.9.1",
-    "node-sass": "4.9.3"
+    "node-sass": "4.9.3",
+    "raven": "2.6.4"
   },
   "devDependencies": {
     "browser-refresh": "1.7.3",
