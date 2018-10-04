@@ -1,4 +1,5 @@
 require('marko/node-require');
+require('engine-strict').check();
 
 const path = require('path');
 const cookieParser = require('cookie-parser');
@@ -10,6 +11,7 @@ const markoExpress = require('marko/express');
 const lasso = require('lasso');
 const lassoMiddleware = require('lasso/middleware');
 const compression = require('compression');
+const apiApp = require('@majorkey2/api');
 
 const router = require('./src/router');
 
@@ -36,11 +38,14 @@ lasso.configure({
 //   prodErrorHandler,
 // } = require('./middleware/error_handlers');
 
+const webApp = express();
+
+// Host the API off the same server since the website depends on it
+webApp.use(apiApp);
+
 /** ************************
   WEB APP CONFIGURATION
 ************************** */
-const webApp = express();
-
 webApp.use(compression());
 webApp.use(cookieParser(process.env.COOKIE_SECRET));
 webApp.use(cookieSession({
@@ -51,8 +56,7 @@ webApp.use(csrf({ ignoreMethods: ['GET', 'HEAD', 'OPTIONS'] }));
 webApp.use(markoExpress());
 webApp.use(lassoMiddleware.serveStatic());
 
-// Now for the good stuff. Include all the pages we'd like served
-webApp.use(router); // Always put this last
+webApp.use(router); // Add all the web routes to the app
 
 // Catch all the errors from all the other web routes
 // webapp.use(devErrorHandler);

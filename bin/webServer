@@ -3,28 +3,20 @@
 const logger = require('morgan');
 const forceSSL = require('express-force-ssl');
 const http = require('http');
-const debug = require('debug')('apiServer');
-const express = require('express');
+const debug = require('debug')('server startup');
 const Raven = require('raven');
-const apiApp = require('@majorkey2/api');
-const webApp = require('../');
-
-require('engine-strict').check();
+const app = require('../');
 
 const isProd = process.env.NODE_ENV === 'production';
 const port = parseInt(process.env.PORT, 10) || 4000;
 
-const masterApp = express();
-
 if (process.env.SENTRY_DSN) {
   Raven.config(process.env.SENTRY_DSN).install();
-  masterApp.use(Raven.requestHandler());
-  masterApp.use(Raven.errorHandler());
+  app.use(Raven.requestHandler());
+  app.use(Raven.errorHandler());
 }
 
-masterApp.use(webApp, apiApp);
-
-const server = http.createServer(masterApp);
+const server = http.createServer(app);
 
 /**
  * Event listener for HTTP server "error" event.
@@ -64,10 +56,10 @@ function onListening() {
   debug(`Listening on ${bind}`);
 }
 
-masterApp.use(logger('dev'));
+app.use(logger('dev'));
 if (isProd) {
-  masterApp.set('forceSSLOptions', { trustXFPHeader: true });
-  masterApp.use(forceSSL);
+  app.set('forceSSLOptions', { trustXFPHeader: true });
+  app.use(forceSSL);
 }
 
 /**
