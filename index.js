@@ -11,7 +11,7 @@ const lasso = require('lasso');
 const lassoMiddleware = require('lasso/middleware');
 const compression = require('compression');
 
-const routers = require('./routers');
+const router = require('./src/router');
 
 require('dotenv-safe').config({
   example: path.join(__dirname, '.env.example'),
@@ -35,30 +35,27 @@ lasso.configure({
 //   devErrorHandler,
 //   prodErrorHandler,
 // } = require('./middleware/error_handlers');
-// const fourOhFour = require('./middleware/not_found');
 
 /** ************************
   WEB APP CONFIGURATION
 ************************** */
-const webapp = express();
+const webApp = express();
 
-webapp.use(compression());
-webapp.use(cookieParser(process.env.COOKIE_SECRET));
-webapp.use(cookieSession({
+webApp.use(compression());
+webApp.use(cookieParser(process.env.COOKIE_SECRET));
+webApp.use(cookieSession({
   secret: process.env.COOKIE_SECRET,
   expires: DateTime.local().plus({ years: 1 }),
 }));
-webapp.use(csrf({ ignoreMethods: ['GET', 'HEAD', 'OPTIONS'] }));
-webapp.use(markoExpress());
-webapp.use(lassoMiddleware.serveStatic());
+webApp.use(csrf({ ignoreMethods: ['GET', 'HEAD', 'OPTIONS'] }));
+webApp.use(markoExpress());
+webApp.use(lassoMiddleware.serveStatic());
 
-webapp.use(routers);
-
-
-// webapp.use(fourOhFour); // Catch everything else with a 404 response
+// Now for the good stuff. Include all the pages we'd like served
+webApp.use(router); // Always put this last
 
 // Catch all the errors from all the other web routes
 // webapp.use(devErrorHandler);
 // webapp.use(prodErrorHandler);
 
-module.exports = webapp;
+module.exports = webApp;
