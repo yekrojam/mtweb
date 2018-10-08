@@ -11,6 +11,7 @@ const markoExpress = require('marko/express');
 const lasso = require('lasso');
 const lassoMiddleware = require('lasso/middleware');
 const compression = require('compression');
+const Sentry = require('@sentry/node');
 const apiApp = require('@majorkey2/api');
 
 const router = require('./src/router');
@@ -20,6 +21,10 @@ require('dotenv-safe').config({
 });
 
 const isProduction = process.env.NODE_ENV === 'production';
+
+if (process.env.SENTRY_DSN) {
+  Sentry.init({ dsn: process.env.SENTRY_DSN });
+}
 
 // Configure lasso to control how JS/CSS/etc. is delivered to the browser
 lasso.configure({
@@ -46,6 +51,7 @@ webApp.use(apiApp);
 /** ************************
   WEB APP CONFIGURATION
 ************************** */
+webApp.use(Sentry.Handlers.requestHandler());
 webApp.use(compression());
 webApp.use(cookieParser(process.env.COOKIE_SECRET));
 webApp.use(cookieSession({
@@ -59,6 +65,7 @@ webApp.use(lassoMiddleware.serveStatic());
 webApp.use(router); // Add all the web routes to the app
 
 // Catch all the errors from all the other web routes
+webApp.use(Sentry.Handlers.errorHandler());
 // webapp.use(devErrorHandler);
 // webapp.use(prodErrorHandler);
 

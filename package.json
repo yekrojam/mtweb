@@ -19,6 +19,7 @@
   "dependencies": {
     "@lasso/marko-taglib": "1.0.12",
     "@majorkey2/api": "git+https://github.com/yekrojam/api.git",
+    "@sentry/node": "4.0.6",
     "browser-refresh-taglib": "1.1.0",
     "compression": "1.7.3",
     "cookie-parser": "1.4.3",
@@ -37,8 +38,7 @@
     "lodash": "4.17.11",
     "marko": "4.13.5",
     "morgan": "1.9.1",
-    "node-sass": "4.9.3",
-    "raven": "2.6.4"
+    "node-sass": "4.9.3"
   },
   "devDependencies": {
     "browser-refresh": "1.7.3",

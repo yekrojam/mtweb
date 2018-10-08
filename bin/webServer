@@ -4,17 +4,10 @@ const logger = require('morgan');
 const forceSSL = require('express-force-ssl');
 const http = require('http');
 const debug = require('debug')('server startup');
-const Raven = require('raven');
 const app = require('../');
 
 const isProd = process.env.NODE_ENV === 'production';
 const port = parseInt(process.env.PORT, 10) || 4000;
-
-if (process.env.SENTRY_DSN) {
-  Raven.config(process.env.SENTRY_DSN).install();
-  app.use(Raven.requestHandler());
-  app.use(Raven.errorHandler());
-}
 
 const server = http.createServer(app);
 
