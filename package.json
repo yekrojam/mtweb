@@ -30,15 +30,13 @@
     "dotenv-safe": "6.0.0",
     "engine-strict": "1.0.0",
     "express": "4.16.3",
-    "express-app-server": "1.0.3",
-    "express-force-ssl": "0.3.2",
+    "express-app-server": "2.0.0",
     "express-promise-router": "3.0.3",
     "lasso": "3.2.6",
     "lasso-marko": "2.4.4",
     "lasso-sass": "3.0.0",
     "lodash": "4.17.11",
     "marko": "4.13.5",
-    "morgan": "1.9.1",
     "node-sass": "4.9.3"
   },
   "devDependencies": {
