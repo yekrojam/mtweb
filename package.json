@@ -10,7 +10,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "dev": "browser-refresh ./bin/webServer",
+    "dev": "browser-refresh -r express-app-server",
     "start": "express-app-server",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,11 +27,10 @@
     "csurf": "1.9.0",
     "dayjs": "1.7.7",
     "debug": "4.0.1",
-    "dotenv-safe": "6.0.0",
-    "engine-strict": "1.0.0",
     "express": "4.16.3",
     "express-app-server": "2.0.0",
     "express-promise-router": "3.0.3",
+    "joi": "14.0.4",
     "lasso": "3.2.6",
     "lasso-marko": "2.4.4",
     "lasso-sass": "3.0.0",

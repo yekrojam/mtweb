@@ -1,7 +1,6 @@
 require('marko/node-require');
-require('engine-strict').check();
+require('./envVerification').verify();
 
-const path = require('path');
 const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
 const csrf = require('csurf');
@@ -15,10 +14,6 @@ const Sentry = require('@sentry/node');
 const apiApp = require('@majorkey2/api');
 
 const router = require('./src/router');
-
-require('dotenv-safe').config({
-  example: path.join(__dirname, '.env.example'),
-});
 
 const isProduction = process.env.NODE_ENV === 'production';
 
