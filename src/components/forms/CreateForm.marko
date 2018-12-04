@@ -1,0 +1,32 @@
+import api from 'axiosAPI';
+import formSerialize from 'form-serialize';
+
+class {
+  submit(event) {
+    event.preventDefault();
+    api(this.input.action, {
+      method: 'POST',
+      data: formSerialize(this.getEl(), { hash: true }),
+    })
+    .then(this.success.bind(this))
+    .catch(this.failure.bind(this));
+  }
+
+  success(res) {
+    console.log('success', res.data.id);
+    this.emit('success', res.data);
+    if (input.sucessURL) {
+      window.location = successURL;
+    }
+  }
+
+  failure(err) {
+    this.emit('failure', err.response || {});
+
+    // TODO display error messages on correct fields
+  }
+}
+
+<form on-submit('submit') action=input.target method="POST">
+  <include(input.renderBody) />
+</form>

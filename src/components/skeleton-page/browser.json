@@ -1,8 +1,0 @@
-{
-  "dependencies": [
-    {
-      "type": "css",
-      "url": "https://unpkg.com/spectre.css/dist/spectre.min.css"
-    }
-  ]
-}

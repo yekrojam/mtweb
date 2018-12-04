@@ -1,0 +1,11 @@
+{
+  "dependencies": [
+    {
+      "type": "js",
+      "url": "https://cdn.auth0.com/js/lock/11.11.0/lock.min.js",
+      "attributes": {
+        "crossorigin": "anonymous"
+      }
+    }
+  ]
+}

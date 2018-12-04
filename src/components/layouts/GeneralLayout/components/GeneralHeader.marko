@@ -1,3 +1,5 @@
+
+
 <section class="bg-dark py-2">
   <header class="navbar container grid-lg">
     <section class="navbar-section">
@@ -6,7 +8,10 @@
       &#128273;
     </section>
     <section class="navbar-section">
-      <a href="#" class="btn btn-primary">Login</a>
+      <if(input.userManagement !== false)>
+        <LoginButton if(!input.userId)>Login</LoginButton>
+        <UserMenu userId=input.userId if(input.userId)/>
+      </if>
     </section>
   </header>
 </section>

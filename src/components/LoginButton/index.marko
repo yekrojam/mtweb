@@ -1,0 +1,28 @@
+import globalStore from 'marko-globals';
+
+class {
+  openDialog(event, el) {
+    const passwordlessOptions = {
+      allowedConnections: ['email'],
+      passwordlessMethod: 'code',
+      responseType: 'code',
+      auth: {
+        redirectUrl: globalStore.get('env.AUTH0_CALLBACK_URL'),
+        responseType: 'code',
+        params: {
+          scope: 'openid profile email',
+        }
+      }
+    };
+
+    const lock = new Auth0LockPasswordless(
+      globalStore.get('env.AUTH0_CLIENT_ID'),
+      globalStore.get('env.AUTH0_DOMAIN'),
+      passwordlessOptions
+    );
+
+    lock.show();
+  }
+}
+
+<button class="btn btn-primary" on-click('openDialog')><include(input.renderBody)/></button>

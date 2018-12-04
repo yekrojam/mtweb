@@ -1,0 +1,10 @@
+$ const { id: userId } = out.global.req.user || {};
+
+<SkeletonLayout ...input>
+  <@header>
+    <GeneralHeader userManagement=input.userManagement userId=userId/>
+  </@header>
+  <@footer>
+    <GeneralFooter/>
+  </@footer>
+</SkeletonLayout>

@@ -1,0 +1,20 @@
+{
+  "dependencies": [
+    {
+      "type": "css",
+      "url": "https://unpkg.com/spectre.css@0.5.5/dist/spectre.min.css",
+      "attributes": {
+        "integrity": "sha384-qp4aMaujc5AX578LM1NCLRimwk1h0rCNw6DTwM9mZ79DsQcAfLNjVaFNoDonP/uA",
+        "crossorigin": "anonymous"
+      }
+    },
+    {
+      "type": "css",
+      "url": "https://unpkg.com/spectre.css@0.5.5/dist/spectre-icons.min.css",
+      "attributes": {
+        "integrity": "sha384-9XlqgiGyuAdTTMpk9+XXCaLdJureG+EZ3MtSL3IVfFvNBJ7dOTDuAP6ZJ3LTZPtA",
+        "crossorigin": "anonymous"
+      }
+    }
+  ]
+}

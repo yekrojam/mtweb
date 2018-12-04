@@ -22,28 +22,19 @@
     <meta name="author" content="">
     <meta name="robots" content="noindex, nofollow">
 
-    <title>&#128273; MK2 - <include(input.pageTitle)/></title>
+    <title>&#128273; MK2 - ${input.pageTitle || 'MajorKey2'}</title>
     <lasso-head/>
   </head>
   <body>
-    <div class="page-container">
-      <div class="content-wrapper">
-      <if(input.renderBody)>
+    <marko-globals/>
+    <include(input.header)/>
+    <div id="page-container">
+      <div class="container grid-lg" body-only-if(input.fullWidth)>
         <include(input.renderBody)/>
-      </if>
-      <else>
-        Some default text. And Even more! Test. Another one. Daft punk.
-      </else>
       </div>
-
-      <footer>
-        <include(input.footerContent)/>
-        <div class="container grid-lg">
-          <div class="float-right">© ${ new Date().getFullYear() }</div>
-        </div>
-      </footer>
     </div>
-    <browser-refresh/>
+    <include(input.footer)/>
     <lasso-body/>
+    <browser-refresh/>
   </body>
 </html>

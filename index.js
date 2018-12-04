@@ -1,9 +1,9 @@
 require('marko/node-require');
-require('./envVerification').verify();
+require('./src/utils/envVerification').verify();
+require('./src/utils/auth0PassportStrategy').install();
 
-const cookieParser = require('cookie-parser');
 const cookieSession = require('cookie-session');
-const csrf = require('csurf');
+const passport = require('passport');
 const express = require('express');
 const dayjs = require('dayjs');
 const markoExpress = require('marko/express');
@@ -48,14 +48,19 @@ webApp.use(apiApp);
 ************************** */
 webApp.use(Sentry.Handlers.requestHandler());
 webApp.use(compression());
-webApp.use(cookieParser(process.env.COOKIE_SECRET));
+webApp.use(lassoMiddleware.serveStatic());
 webApp.use(cookieSession({
+  secure: isProduction,
+  httpOnly: true,
   secret: process.env.COOKIE_SECRET,
   expires: dayjs().add(1, 'year').toDate(),
+  sameSite: 'strict',
+  resave: true,
+  saveUninitialized: true,
 }));
-webApp.use(csrf({ ignoreMethods: ['GET', 'HEAD', 'OPTIONS'] }));
+webApp.use(passport.initialize());
+webApp.use(passport.session());
 webApp.use(markoExpress());
-webApp.use(lassoMiddleware.serveStatic());
 
 webApp.use(router); // Add all the web routes to the app
 

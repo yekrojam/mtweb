@@ -10,6 +10,12 @@ module.exports = {
       JWT_SECRET: Joi.string().required(),
       COOKIE_SECRET: Joi.string().required(),
       SENTRY_DSN: Joi.string().uri(),
+      AUTH0_DOMAIN: Joi.string().required(),
+      AUTH0_CLIENT_ID: Joi.string().required(),
+      AUTH0_CLIENT_SECRET: Joi.string().required(),
+      AUTH0_CALLBACK_URL: Joi.string().uri().required(),
+      CLIENT_BASE_URL: Joi.string().uri().required(),
+      API_BASE_URL: Joi.string().uri().required(),
     };
 
     const result = Joi.validate(

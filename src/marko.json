@@ -1,0 +1,11 @@
+{
+  "tags-dir": [
+    "./components/layouts",
+    "./components/forms",
+    "./components"
+  ],
+  "<Signup-Form>": {
+    "renderer": "signupForm.marko",
+    "@email": "string"
+  }
+}

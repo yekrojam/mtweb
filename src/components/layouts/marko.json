@@ -1,0 +1,7 @@
+{
+  "<General-Header>": {
+    "renderer": "./GenenraLayout/components/GeneralHeader.marko",
+    "@userManagement": "boolean",
+    "@userId": "string"
+  }
+}
